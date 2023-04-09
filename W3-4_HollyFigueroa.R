@@ -30,26 +30,19 @@ agg_df<- df%>% group_by(Year) %>%
 agg_df
   
  
-# PLot Line chart Plotly
-fig <- plot_ly(agg_df, x = agg_df$Year, 
-               y = agg_df$yr_revenue, 
-               type = 'scatter', 
-               mode ='lines')
-
-
-
-fig <- fig %>% layout(
-                      title = 'LINE CHART: Sales Revenue',
-                      xaxis = list(range = c(2010.5,2016.5),list(title = 'Year')),
-                      yaxis = list(range = c(0,20)),list(title = 'Million')
-                      )
-                      
-fig
-
-# Plot Step Chart GGPLOT
-
-ggplot(agg_df, aes(Year, yr_revenue)) + geom_step()+
+# PLot Line chart GGPLOT
+ggplot(agg_df, aes(Year, yr_revenue)) + geom_line()+
   ggtitle('STEP CHART: Revenue by Year')+
   ylab('Million $')+
   theme(panel.grid = element_blank())
+  #ylim(0,20)+
+  #xlim(2011,2016)
+  
+
+# Plot Step Chart GGPLOT
+ggplot(agg_df, aes(Year, yr_revenue)) + geom_step()+
+  ggtitle('STEP CHART: Revenue by Year')+
+  ylab('Million $')+
+  theme(panel.grid = element_blank())+
+  #ylim(0,20)
   
