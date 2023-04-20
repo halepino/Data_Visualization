@@ -3,9 +3,7 @@
 # Date: 4/6/23
 # Data Source: https://www.kaggle.com/datasets/jehanzaibbhatti/sales-data
 
-library (plotly)
 library(dplyr)
-library(readxl)
 library(ggplot2)
 
 #1 Create line chart and step chart
@@ -32,17 +30,16 @@ agg_df
  
 # PLot Line chart GGPLOT
 ggplot(agg_df, aes(Year, yr_revenue)) + geom_line()+
-  ggtitle('STEP CHART: Revenue by Year')+
+  ggtitle('LINE CHART: Revenue by Year')+
   ylab('Million $')+
-  theme(panel.grid = element_blank())
-  #ylim(0,20)+
-  #xlim(2011,2016)
+  theme(panel.grid = element_blank())+
+  coord_cartesian(ylim = c(0, 20))
   
 
 # Plot Step Chart GGPLOT
-ggplot(agg_df, aes(Year, yr_revenue)) + geom_step()+
+ggplot(agg_df, aes(Year, yr_revenue)) + geom_step(direction  = 'vh')+
   ggtitle('STEP CHART: Revenue by Year')+
   ylab('Million $')+
   theme(panel.grid = element_blank())+
-  #ylim(0,20)
+  coord_cartesian(ylim = c(0, 20))
   
