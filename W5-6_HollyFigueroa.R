@@ -5,8 +5,9 @@
 
 library(treemap)
 library(ggplot2)
+library(dplyr)
 
-df<-read.csv('Sales_data.csv')
+df<-read.csv('sales_data.csv')
 head(df)
 
 
@@ -20,7 +21,8 @@ treemap(df, #Your data frame object
 )
 
 # Group by year and get sum profit by year
-sum_df<- df%>% group_by(Year) %>%
+sum_df<- df%>% 
+  group_by(Year)%>%
   summarise(yr_profit = sum(Profit)/1000000)%>%
   as.data.frame()
 
@@ -30,7 +32,7 @@ head(sum_df)
 ggplot(sum_df, aes(Year, yr_profit)) + 
   geom_area(fill = 5, alpha = .7) +
   ggtitle('AREA CHART: Profits by Year')+
-  xlab('Million $')
+  ylab('Million')
 
 # Group by year and product category to make stacked area
 sum_cat_df<- df%>% group_by(Year, Country) %>%
