@@ -7,7 +7,7 @@ library(treemap)
 library(ggplot2)
 library(dplyr)
 
-df<-read.csv('DSC640/Data_Visualization/crime_ed_money.csv')
+df<-read.csv('crime_ed_money.csv')
 head(df)
 
 # Create Scatter plot
